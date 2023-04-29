@@ -1,0 +1,7 @@
+@use 'base';
+@use 'pages';
+@use 'components';
+
+body {
+  background-color: base.$color--black;
+}

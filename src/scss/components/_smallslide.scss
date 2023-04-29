@@ -1,0 +1,9 @@
+@use '../base';
+
+.small-slide {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  // background-color: blue;
+  flex-shrink: 0;
+}

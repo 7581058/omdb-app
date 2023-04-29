@@ -1,0 +1,50 @@
+@use '../base';
+
+.movie-list {
+  width: 60%;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: base.$color--primary-10;
+  .movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    .movie {
+      $width: 200px;
+      width: $width;
+      height: calc($width  * 3 / 2 + 50px);
+      text-decoration: none;
+      color: base.$color--white;
+      overflow: hidden;
+      .poster-wrap {
+        width: 100%;
+        height: calc(100% - 50px);
+        overflow: hidden;
+        .poster {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          transition: .4s;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+      .title {
+        width: 100%;
+        height: 50px;
+        color:base.$color--white;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+  .message {
+    color: base.$color--primary;
+    font-size: 20px;
+    text-align: center;
+  }
+}
