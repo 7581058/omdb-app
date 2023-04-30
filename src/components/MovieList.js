@@ -2,6 +2,7 @@ import { Component } from '../core/core'
 import movieStore from '../store/movie'
 import MovieItem from './MovieItem'
 import MovieDetail from './MovieDetail'
+import TheLoader from './TheLoader'
 
 export default class MovieList extends Component {
   constructor() {
@@ -24,8 +25,10 @@ export default class MovieList extends Component {
           ? `<div class="message">${movieStore.state.message}</div>`
           : '<div class="movies"></div>'
       }
-      <div class="the-loader hide"></div>
     `
+    const loader = new TheLoader().el
+    const detail = new MovieDetail().el
+    this.el.append(loader, detail)
 
     const moviesEl = this.el.querySelector('.movies')
     moviesEl?.append(
@@ -36,13 +39,5 @@ export default class MovieList extends Component {
           }).el
       )
     )
-
-    const loaderEl = this.el.querySelector('.the-loader')
-    movieStore.state.loading
-      ? loaderEl.classList.remove('hide')
-      : loaderEl.classList.add('hide')
-
-    const detail = new MovieDetail().el
-    this.el.append(detail)
   }
 }

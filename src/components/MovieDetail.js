@@ -1,5 +1,6 @@
 import { Component } from '../core/core'
 import movieStore from '../store/movie'
+import TheLoader from './TheLoader'
 
 export default class Movie extends Component {
   constructor() {
@@ -18,10 +19,15 @@ export default class Movie extends Component {
 
     const { movie } = movieStore.state
 
+    //const bigPoster = movie.Poster.replace('SX300', 'SX700')
+    // posterWrap.innerHTML = /*HTML*/ `
+    //   <div style="background-image: url(${bigPoster})" class="poster"></div>
+    // `
     this.el.innerHTML = /*HTML*/ `
       <div class="modal">
         <button class="btn-close">X</button>
-        <div style="background-image: url(${movie.Poster})" class="poster"></div>
+        <!-- <div style="background-image: url()" class="poster"></div> -->
+        <div class="poster-wrap"></div>
         <div class="specs">
           <div class="title">
             ${movie.Title}
@@ -60,11 +66,23 @@ export default class Movie extends Component {
     `
 
     if (movieStore.state.modal) {
+      const modal = this.el.querySelector('.modal')
+      const loader = new TheLoader().el
+      modal.append(loader)
+
+      if (movie.Poster) {
+        const posterWrap = modal.querySelector('.poster-wrap')
+        let bigPoster = movie.Poster.replace('SX300', 'SX700')
+        posterWrap.innerHTML = /*HTML*/ `
+          <div style="background-image: url(${bigPoster})" class="poster"></div>
+        `
+      }
+
       const closeButton = this.el.querySelector('.btn-close')
       closeButton.addEventListener('click', () => {
-        movieStore.state.modal = false
         const body = document.querySelector('body')
         body.classList.remove('scroll-hidden')
+        movieStore.state.modal = false
       })
     }
   }

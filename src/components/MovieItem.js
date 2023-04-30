@@ -1,5 +1,4 @@
 import { Component } from '../core/core'
-import MovieDetail from './MovieDetail'
 import movieStore, { getMovieDetails } from '../store/movie'
 
 export default class MovieItem extends Component {
@@ -12,12 +11,17 @@ export default class MovieItem extends Component {
   render() {
     const { movie } = this.props
     this.el.classList.add('movie')
+
     this.el.innerHTML = /*HTML*/ `
       <div class="poster-wrap">
-        <div 
-          class="poster" 
-          style = "background-image: url('${movie.Poster}')">
-        </div>
+      <div 
+        class="poster" 
+        style=${
+          movie.Poster === 'N/A'
+            ? `background-image:url("./resource/noimage.png")`
+            : `background-image:url(${movie.Poster})`
+        }  >
+      </div>
       </div>
       <p class="title">
         ${movie.Title}
@@ -25,6 +29,8 @@ export default class MovieItem extends Component {
     `
 
     this.el.addEventListener('click', async () => {
+      movieStore.state.modal = true
+
       await getMovieDetails(movie.imdbID)
 
       const body = document.querySelector('body')

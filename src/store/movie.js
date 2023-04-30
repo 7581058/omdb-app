@@ -39,13 +39,16 @@ export const searchMovies = async page => {
 }
 
 export const getMovieDetails = async id => {
+  store.state.loading = true
   try {
     const res = await fetch(
       `https://omdbapi.com?apikey=14c167f8&i=${id}&plot=full`
     )
     store.state.movie = await res.json()
-    store.state.modal = true
+    // store.state.modal = true
   } catch (error) {
     console.log('getMovieDetails error:', error)
+  } finally {
+    store.state.loading = false
   }
 }
