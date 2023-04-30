@@ -1,11 +1,15 @@
 import { Component } from '../core/core'
 import movieStore from '../store/movie'
 import MovieItem from './MovieItem'
+import MovieDetail from './MovieDetail'
 
 export default class MovieList extends Component {
   constructor() {
     super()
     movieStore.subscribe('movies', () => {
+      this.render()
+    })
+    movieStore.subscribe('loading', () => {
       this.render()
     })
     movieStore.subscribe('message', () => {
@@ -32,5 +36,13 @@ export default class MovieList extends Component {
           }).el
       )
     )
+
+    const loaderEl = this.el.querySelector('.the-loader')
+    movieStore.state.loading
+      ? loaderEl.classList.remove('hide')
+      : loaderEl.classList.add('hide')
+
+    const detail = new MovieDetail().el
+    this.el.append(detail)
   }
 }

@@ -1,0 +1,18 @@
+@use '../base';
+
+.the-loader {
+  width: 30px;
+  height: 30px;
+  margin: 30px auto;
+  border: 4px solid base.$color--point;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: loader 2s infinite linear;
+  &.hide {
+    display: none;
+  }
+}
+@keyframes loader {
+  0% { transform: rotate(0deg); }
+  100% {transform: rotate(360deg); }
+}

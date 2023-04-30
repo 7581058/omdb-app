@@ -1,16 +1,16 @@
 import { Component } from '../core/core'
+import MovieDetail from './MovieDetail'
+import movieStore, { getMovieDetails } from '../store/movie'
 
 export default class MovieItem extends Component {
   constructor(props) {
     super({
       props,
-      tagName: 'a'
+      tagName: 'div'
     })
   }
   render() {
     const { movie } = this.props
-
-    this.el.setAttribute('href', `#/movie?id=${movie.imdbID}`)
     this.el.classList.add('movie')
     this.el.innerHTML = /*HTML*/ `
       <div class="poster-wrap">
@@ -23,11 +23,12 @@ export default class MovieItem extends Component {
         ${movie.Title}
       </p>
     `
-  }
-}
 
-{
-  /* <div class="year">
-          ${movie.Year}
-        </div> */
+    this.el.addEventListener('click', async () => {
+      await getMovieDetails(movie.imdbID)
+
+      const body = document.querySelector('body')
+      body.classList.add('scroll-hidden')
+    })
+  }
 }

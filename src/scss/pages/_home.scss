@@ -1,5 +1,9 @@
 @use '../base';
 
+body.scroll-hidden {
+  overflow: hidden;
+}
+
 .page-home {
   width: 100%;
   height: 100%;
