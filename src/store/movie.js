@@ -8,6 +8,7 @@ const store = new Store({
   message: 'Search for the movie title',
   loading: false,
   modal: false,
+  contents: false,
   movieID: ''
 })
 
@@ -45,10 +46,16 @@ export const getMovieDetails = async id => {
       `https://omdbapi.com?apikey=14c167f8&i=${id}&plot=full`
     )
     store.state.movie = await res.json()
-    // store.state.modal = true
+    await changeState()
+
+    // store.state.contents = true
   } catch (error) {
     console.log('getMovieDetails error:', error)
   } finally {
     store.state.loading = false
   }
+}
+
+function changeState() {
+  store.state.contents = true
 }
