@@ -11,7 +11,6 @@ export default class MovieItem extends Component {
   render() {
     const { movie } = this.props
     this.el.classList.add('movie')
-
     this.el.innerHTML = /*HTML*/ `
       <div class="poster-wrap">
       <div 
