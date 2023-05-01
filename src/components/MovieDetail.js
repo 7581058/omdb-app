@@ -32,31 +32,30 @@ export default class Movie extends Component {
               ${movie.Title}
             </div>
             <div class="labels">
-              <span>${movie.Released}</span>
-              &nbsp;/
-              <span>${movie.Runtime}</span>
-              &nbsp;/
-              <span>${movie.Country}</span>
+              <span>Released: ${movie.Released}</span>
+              <br>
+              <span>Runtime: ${movie.Runtime}</span>
             </div>
             <div class="plot">
               ${movie.Plot}
             </div>
-            <div>
-              
+            <div class="ratings">
+              <h3>Ratings</h3>
+              <div class="ratings-wrap"></div>
             </div>
-            <div>
+            <div class="actors">
               <h3>Actors</h3>
               <p>${movie.Actors}</p>
             </div>
-            <div>
+            <div class="director">
               <h3>Director</h3>
               <p>${movie.Director}</p>
             </div>
-            <div>
+            <div class="production">
               <h3>Production</h3>
               <p>${movie.Production}</p>
             </div>
-            <div>
+            <div class="genre">
               <h3>Genre</h3>
               <p>${movie.Genre}</p>
             </div>
@@ -76,6 +75,20 @@ export default class Movie extends Component {
       if (movieStore.state.contents) {
         loader.classList.add('hide')
         wrap.classList.remove('hide')
+
+        const ratingsWrap = this.el.querySelector('.ratings-wrap')
+        ratingsWrap.innerHTML = `
+          ${movie.Ratings.map(rating => {
+            return /*HTML*/ `
+              <div class="ratings">
+                <div class="ratings-logo">
+                  <img src="./resource/${rating.Source}.png"/>
+                </div>
+                <p>${rating.Source} - ${rating.Value}</p>
+              </div>
+            `
+          }).join('')}
+        `
       }
 
       if (movie.Poster) {
