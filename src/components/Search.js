@@ -12,7 +12,7 @@ export default class Search extends Component {
       <div class="search-wrap">
         <input value="" placeholder="Enter the movie title to search" />
         <select id='year'>
-          <option>year</option>
+          <option>All Year</option>
         </select>
         <button class="btn-search">Search</button>
       </div>
@@ -33,6 +33,11 @@ export default class Search extends Component {
     })
     inputEl.addEventListener('keydown', event => {
       if (event.key === 'Enter' && movieStore.state.searchText.trim()) {
+        if (select.value === 'All Year') {
+          movieStore.state.searchYear = ''
+        } else {
+          movieStore.state.searchYear = select.value
+        }
         searchMovies(2)
         searchMovies(1)
       }
@@ -40,6 +45,11 @@ export default class Search extends Component {
     const btnEl = this.el.querySelector('.btn-search')
     btnEl.addEventListener('click', () => {
       if (movieStore.state.searchText.trim()) {
+        if (select.value === 'All Year') {
+          movieStore.state.searchYear = ''
+        } else {
+          movieStore.state.searchYear = select.value
+        }
         searchMovies(2)
         searchMovies(1)
       }

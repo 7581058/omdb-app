@@ -2,6 +2,7 @@ import { Store } from '../core/core'
 
 const store = new Store({
   searchText: '',
+  searchYear: '',
   page: 1,
   movies: [],
   movie: {},
@@ -23,7 +24,7 @@ export const searchMovies = async page => {
   }
   try {
     const res = await fetch(
-      `https://omdbapi.com?apikey=14c167f8&s=${store.state.searchText}&page=${page}`
+      `https://omdbapi.com?apikey=14c167f8&s=${store.state.searchText}&y=${store.state.searchYear}&page=${page}`
     )
     const { Search, totalResults, Response, Error } = await res.json()
     if (Response === 'True') {
