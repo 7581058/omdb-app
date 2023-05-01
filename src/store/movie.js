@@ -7,7 +7,7 @@ const store = new Store({
   movies: [],
   movie: {},
   message: 'Search for the movie title',
-  loading: false,
+  listLoading: false,
   modal: false,
   contents: false,
   movieID: ''
@@ -16,7 +16,7 @@ const store = new Store({
 export default store
 
 export const searchMovies = async page => {
-  store.state.loading = true
+  store.state.listLoading = true
   store.state.page = page
   if (page === 1) {
     store.state.movies = []
@@ -36,24 +36,19 @@ export const searchMovies = async page => {
   } catch (error) {
     console.log('searchMovies error:', error)
   } finally {
-    store.state.loading = false
+    store.state.listLoading = false
   }
 }
 
 export const getMovieDetails = async id => {
-  store.state.loading = true
   try {
     const res = await fetch(
       `https://omdbapi.com?apikey=14c167f8&i=${id}&plot=full`
     )
     store.state.movie = await res.json()
     await changeState()
-
-    // store.state.contents = true
   } catch (error) {
     console.log('getMovieDetails error:', error)
-  } finally {
-    store.state.loading = false
   }
 }
 

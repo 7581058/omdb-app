@@ -10,7 +10,7 @@ export default class MovieList extends Component {
     movieStore.subscribe('movies', () => {
       this.render()
     })
-    movieStore.subscribe('loading', () => {
+    movieStore.subscribe('listLoading', () => {
       this.render()
     })
     movieStore.subscribe('message', () => {
@@ -29,6 +29,10 @@ export default class MovieList extends Component {
     const loader = new TheLoader().el
     const detail = new MovieDetail().el
     this.el.append(loader, detail)
+
+    movieStore.state.listLoading
+      ? loader.classList.remove('hide')
+      : loader.classList.add('hide')
 
     const moviesEl = this.el.querySelector('.movies')
     moviesEl?.append(

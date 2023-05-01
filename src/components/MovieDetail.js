@@ -71,8 +71,10 @@ export default class Movie extends Component {
 
       const loader = new TheLoader().el
       modal.append(loader)
+      loader.classList.remove('hide')
 
       if (movieStore.state.contents) {
+        loader.classList.add('hide')
         wrap.classList.remove('hide')
       }
 
