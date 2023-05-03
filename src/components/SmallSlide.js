@@ -4,12 +4,6 @@ import recommendStore, { getGenre } from '../store/recommend'
 import movieStore, { getMovieDetails } from '../store/movie'
 
 export default class SmallSlide extends Component {
-  constructor() {
-    super()
-    // movieStore.subscribe('movies', () => {
-    //   this.render()
-    // })
-  }
   render() {
     this.el.classList.add('small-slide')
 
@@ -35,6 +29,12 @@ export default class SmallSlide extends Component {
       <img class="poster" src="${movie.Poster}" />
       `
       swipercontainer.append(slide)
+
+      slide.addEventListener('click', async () => {
+        movieStore.state.movie = {}
+        movieStore.state.modal = true
+        await getMovieDetails(movie.imdbID)
+      })
     })
 
     register()

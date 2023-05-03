@@ -1,8 +1,8 @@
 import { Component } from '../core/core'
 import recommendStore from '../store/recommend'
 import TheHeader from '../components/TheHeader'
-import Particle from '../components/Particle'
 import TheFooter from '../components/TheFooter'
+import Particle from '../components/Particle'
 
 export default class Start extends Component {
   render() {
@@ -47,11 +47,11 @@ export default class Start extends Component {
       <a class="btn-gosearch" href="#/home">Go Search!</a>
     `
 
-    const theheader = new TheHeader().el
-    const particle = new Particle().el
+    const theHeader = new TheHeader().el
     const theFooter = new TheFooter().el
+    const particle = new Particle().el
 
-    this.el.append(particle, theheader, selector, theFooter)
+    this.el.append(theHeader, particle, selector, theFooter)
 
     const gosearchButton = this.el.querySelector('.btn-gosearch')
     gosearchButton.addEventListener('click', () => {

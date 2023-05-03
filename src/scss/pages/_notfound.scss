@@ -1,0 +1,19 @@
+@use '../base';
+
+.page-notfound {
+  display: flex;
+  justify-content: center;
+  .msg {
+    margin-top: 50%;
+    position: relative;
+    font-size: 70px;
+    font-weight: 700;
+    color: base.$color--primary;
+    text-align: center;
+    z-index:3px;
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+  }
+}

@@ -65,6 +65,9 @@ export default class Movie extends Component {
     `
 
     if (movieStore.state.modal) {
+      const body = document.querySelector('body')
+      body.classList.add('scroll-hidden')
+
       const modal = this.el.querySelector('.modal')
       const wrap = modal.querySelector('.wrap')
 
@@ -77,6 +80,7 @@ export default class Movie extends Component {
         wrap.classList.remove('hide')
 
         const ratingsWrap = this.el.querySelector('.ratings-wrap')
+        console.log('에러', movie.Ratings)
         ratingsWrap.innerHTML = `
           ${movie.Ratings.map(rating => {
             return /*HTML*/ `

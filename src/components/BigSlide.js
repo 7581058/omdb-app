@@ -1,58 +1,27 @@
 import { Component } from '../core/core'
 import { register } from 'swiper/element/bundle'
 import movieStore, { getMovieDetails } from '../store/movie'
-import 'swiper/css/autoplay'
-import 'swiper/scss/autoplay'
+import recommendStore from '../store/recommend'
 
 export default class BigSlide extends Component {
   render() {
-    const newmovies = [
-      {
-        title: '정이',
-        id: 'tt22352848',
-        duration: 91000
-      },
-      {
-        title: '스위치',
-        id: 'tt24076346',
-        duration: 64000
-      },
-      {
-        title: '슬램덩크 더 퍼스트',
-        id: 'tt15242330',
-        duration: 60000
-      },
-      {
-        title: '교섭',
-        id: 'tt21111120',
-        duration: 57000
-      }
-    ]
-
     this.el.classList.add('big-slide')
 
     this.el.innerHTML = /*HTML*/ `
-      <swiper-container
-        autoplay="true"
-        loop="true"
-        loop-additional-slides=1
-      >
+      <swiper-container loop="true" autoplay-disable-on-interaction="false" autoplay-delay="2000" >
       </swiper-container>
     `
 
     const swipercontainer = this.el.querySelector('swiper-container')
 
-    newmovies.forEach(async movie => {
-      await getMovieDetails(movie.id)
+    recommendStore.state.newmovies.forEach(async newmovie => {
+      await getMovieDetails(newmovie.id)
+      const { movie } = movieStore.state
       const slide = document.createElement('swiper-slide')
-      // slide.setAttribute('data-swiper-autoplay', movie.duration)
       slide.innerHTML = /*HTML*/ `
         <div class="player">
-          <video
-            autoplay
-            muted
-          >
-            <source src="./resource/${movieStore.state.movie.imdbID}.mp4" />
+          <video autoplay muted >
+            <source src="./resource/${movie.imdbID}.mp4" />
           </video>
           <div class="player-controls">
             <button class="volume muted">
@@ -62,17 +31,17 @@ export default class BigSlide extends Component {
             </button>
           </div>
           <div class="info">
-            <p class="title">${movieStore.state.movie.Title}</p>
-            <div class="year">${movieStore.state.movie.Released}</div>
+            <p class="title">${movie.Title}</p>
+            <div class="year">${movie.Released}</div>
             <div class="plot">
-              ${movieStore.state.movie.Plot}
+              ${movie.Plot}
             </div>
-            <a href="#" class="btn btn-slide">More...</a>
+            <button class="btn btn-more">More...</button>
           </div>
         </div>
       `
       swipercontainer.append(slide)
+      register()
     })
-    register()
   }
 }

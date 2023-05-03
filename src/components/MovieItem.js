@@ -29,11 +29,7 @@ export default class MovieItem extends Component {
 
     this.el.addEventListener('click', async () => {
       movieStore.state.movie = {}
-      const body = document.querySelector('body')
-      body.classList.add('scroll-hidden')
-
       movieStore.state.modal = true
-
       await getMovieDetails(movie.imdbID)
     })
   }

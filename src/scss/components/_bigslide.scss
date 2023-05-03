@@ -57,12 +57,16 @@
             font-size: 20px;
             color: base.$color--white;
           }
-          .btn-slide {
+          .btn-more {
             background-color: transparent;
             border: 2px solid base.$color--primary;
             border-radius: 8px;
             color: base.$color--primary;
             margin-top: 20px;
+            &:hover {
+              background-color: base.$color--primary;
+              color: base.$color--black;
+            }
           }
         }
       }
