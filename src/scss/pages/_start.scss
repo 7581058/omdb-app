@@ -17,7 +17,7 @@
         text-decoration: underline;
       }
     }
-    .plot {
+    .text {
       color: base.$color--primary;
       font-size: 20px;
       font-family: 'Space Mono', monospace;
@@ -70,22 +70,24 @@
   
   .btn-gosearch {
     position: relative;
-    width: 250px;
+    width: 220px;
     height: 45px;
     margin-top: 50px;
-    background-color: #eee;
+    padding: 5px 0;
+    background-color: base.$color--blue;
+    border-radius: 4px;
     cursor: pointer;
     outline: none;
     z-index: 9;
-    border: 2px solid #a2a2a2;
     font-size: 20px;
     text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
     color: base.$color--black;
+    font-family: 'Poppins', sans-serif;
     &:hover {
-      background-color: #ddd;
+      color: #fff;
     }
   }
 }

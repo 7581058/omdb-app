@@ -3,7 +3,40 @@
 .small-slide {
   position: relative;
   width: 100%;
-  height: 300px;
-  // background-color: blue;
+  height: 250px;
+  box-sizing: border-box;
   flex-shrink: 0;
+  margin-top: 20px;
+  p {
+    margin: 0;
+    color: base.$color--point;
+    font-size: 18px;
+    margin-right: 60px;
+    font-family: 'Space Mono', monospace;
+    text-align: right;
+  }
+  swiper-container {
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: .2s;
+      &:hover {
+        transform: translateY(-5px)
+      }
+      .poster {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
 }

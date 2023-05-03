@@ -2,9 +2,6 @@ import { Component } from '../core/core'
 import movieStore, { searchMovies } from '../store/movie'
 
 export default class Search extends Component {
-  constructor() {
-    super({})
-  }
   render() {
     this.el.classList.add('search')
 
@@ -14,7 +11,7 @@ export default class Search extends Component {
         <select id='year'>
           <option>All Year</option>
         </select>
-        <button class="btn-search">Search</button>
+        <button class="btn btn-search">Search</button>
       </div>
     `
 
@@ -38,8 +35,8 @@ export default class Search extends Component {
         } else {
           movieStore.state.searchYear = select.value
         }
-        searchMovies(2)
         searchMovies(1)
+        searchMovies(2)
       }
     })
     const btnEl = this.el.querySelector('.btn-search')
@@ -50,8 +47,8 @@ export default class Search extends Component {
         } else {
           movieStore.state.searchYear = select.value
         }
-        searchMovies(2)
         searchMovies(1)
+        searchMovies(2)
       }
     })
   }

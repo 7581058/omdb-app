@@ -3,7 +3,70 @@
 .big-slide {
   position: relative;
   width: 100%;
-  height: 70%;
-  // background-color: red;
+  height: 80%;
   flex-shrink: 0;
+  overflow: hidden;
+  swiper-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .player {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: base.$color--black;
+        display: flex;
+        align-items: center;
+        video {
+          position: absolute;
+          width: 100%;
+          bottom: 0;
+        }
+        .volume {
+          position: absolute;
+          right: 10px;
+          bottom: 10px;
+          background-color: transparent;
+          border: none;
+          color: base.$color--white;
+        }
+        .info {
+          margin-left: 60px;
+          width: 40%;
+          height: 50%;
+          display: inline;
+          z-index: 12;
+          .title {
+            font-size: 36px;
+            font-weight: 700;
+            color: base.$color--primary;
+            font-family: 'Space Mono', monospace;
+            margin: 0;
+          }
+          .year {
+            width: fit-content;
+            margin-bottom: 10px;
+            color: base.$color--blue;
+            font-size: 14px;
+          }
+          .plot {
+            font-size: 20px;
+            color: base.$color--white;
+          }
+          .btn-slide {
+            background-color: transparent;
+            border: 2px solid base.$color--primary;
+            border-radius: 8px;
+            color: base.$color--primary;
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+  }
 }
+

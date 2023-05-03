@@ -53,10 +53,11 @@
     .title {
       font-size: 48px;
       color: base.$color--point;
+      font-family: 'Space Mono', monospace;
     }
     .labels {
       margin-top: 10px;
-      color: base.$color--white-50;
+      color: base.$color--blue;
     }
     .plot {
       margin-top: 10px;
@@ -68,6 +69,7 @@
       padding: 0;
       margin: 0;
       margin-top: 20px;
+      font-family: 'Space Mono', monospace;
     }
     p {
       padding: 0;

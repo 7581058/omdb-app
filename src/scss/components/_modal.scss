@@ -19,8 +19,13 @@
     height: 70%;
     position: relative;
     background-color: base.$color--black;
-    border: 2px solid base.$color--point;
+    // border: 2px solid base.$color--point;
+    border: 2px solid base.$color--point-50;
     border-radius: 4px;
     padding: 40px;
+    .btn-close {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
   }
 }

@@ -4,13 +4,15 @@ const store = new Store({
   searchText: '',
   searchYear: '',
   page: 1,
+  pageMax: 1,
   movies: [],
   movie: {},
   message: 'Search for the movie title',
   listLoading: false,
   modal: false,
   contents: false,
-  movieID: ''
+  movieID: '',
+  muted: true
 })
 
 export default store

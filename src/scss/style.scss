@@ -2,6 +2,8 @@
 @use 'pages';
 @use 'components';
 
-body {
-  background-color: base.$color--black;
+.testli {
+  width: 100%;
+  height: 100px;
+  background-color: red;
 }
