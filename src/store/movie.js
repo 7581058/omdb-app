@@ -48,12 +48,8 @@ export const getMovieDetails = async id => {
       `https://omdbapi.com?apikey=14c167f8&i=${id}&plot=full`
     )
     store.state.movie = await res.json()
-    await changeState()
+    store.state.contents = true
   } catch (error) {
     console.log('getMovieDetails error:', error)
   }
-}
-
-function changeState() {
-  store.state.contents = true
 }
