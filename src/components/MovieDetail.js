@@ -80,9 +80,8 @@ export default class Movie extends Component {
         wrap.classList.remove('hide')
 
         const ratingsWrap = this.el.querySelector('.ratings-wrap')
-        console.log('에러', movie.Ratings)
         ratingsWrap.innerHTML = `
-          ${movie.Ratings.map(rating => {
+          ${movie.Ratings?.map(rating => {
             return /*HTML*/ `
               <div class="ratings">
                 <div class="ratings-logo">

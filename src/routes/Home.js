@@ -6,6 +6,7 @@ import SmallSlide from '../components/SmallSlide'
 import Search from '../components/Search'
 import MovieList from '../components/MovieList'
 import movieStore from '../store/movie'
+import ObserverEl from '../components/ObserverEl'
 
 export default class Home extends Component {
   render() {
@@ -17,6 +18,7 @@ export default class Home extends Component {
     const smallslide = new SmallSlide().el
     const search = new Search().el
     const movieList = new MovieList().el
+    const observerEl = new ObserverEl().el
 
     this.el.append(
       theHeader,
@@ -24,6 +26,7 @@ export default class Home extends Component {
       smallslide,
       search,
       movieList,
+      observerEl,
       theFooter
     )
 

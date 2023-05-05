@@ -29,6 +29,7 @@ export default class MovieItem extends Component {
 
     this.el.addEventListener('click', async () => {
       movieStore.state.movie = {}
+      movieStore.state.contents = false
       movieStore.state.modal = true
       await getMovieDetails(movie.imdbID)
     })
