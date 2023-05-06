@@ -14,14 +14,11 @@ export default class ObserverEl extends Component {
     function handle(entries) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          if (
-            //movieStore.state.message === '' &&
-            movieStore.state.page < movieStore.state.pageMax
-          ) {
-            searchMovies()
+          if (movieStore.state.page < movieStore.state.pageMax) {
+            movieStore.state.page += 1
+            searchMovies(movieStore.state.page)
             if (movieStore.state.page === movieStore.state.pageMax) {
               io.disconnect()
-              console.log('옵저버 초과 감지')
             }
           }
         }

@@ -35,7 +35,8 @@ export default class Search extends Component {
         } else {
           movieStore.state.searchYear = select.value
         }
-        searchMovies()
+        searchMovies(1)
+        searchMovies(2)
       }
     })
     const btnEl = this.el.querySelector('.btn-search')
@@ -46,7 +47,8 @@ export default class Search extends Component {
         } else {
           movieStore.state.searchYear = select.value
         }
-        searchMovies()
+        searchMovies(1)
+        searchMovies(2)
       }
     })
   }

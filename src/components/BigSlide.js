@@ -3,6 +3,9 @@ import { register } from 'swiper/element/bundle'
 import movieStore, { getMovieDetails } from '../store/movie'
 import recommendStore from '../store/recommend'
 
+//해야할 것
+//슬라이드 만들때마다 부르지 않기 - 한 번 부른것에서 불러오기 (이왕이면 캐싱)
+
 export default class BigSlide extends Component {
   render() {
     this.el.classList.add('big-slide')
@@ -20,8 +23,8 @@ export default class BigSlide extends Component {
       const slide = document.createElement('swiper-slide')
       slide.innerHTML = /*HTML*/ `
         <div class="player">
-          <video autoplay muted >
-            <source src="./resource/${movie.imdbID}.mp4" />
+          <video autoplay muted src="./resource/${movie.imdbID}.mp4" >
+            
           </video>
           <div class="player-controls">
             <button class="volume muted">

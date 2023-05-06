@@ -32,7 +32,7 @@ export default class SmallSlide extends Component {
 
       slide.addEventListener('click', async () => {
         movieStore.state.movie = {}
-        movieStore.state.contents = false //첫 클릭 시 undefined 뜨지 않게 수정됨!
+        movieStore.state.contents = false //첫 클릭 시 undefined 뜨지 않게
         movieStore.state.modal = true
         await getMovieDetails(movie.imdbID)
       })
