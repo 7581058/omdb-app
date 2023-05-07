@@ -24,7 +24,11 @@ export default class Movie extends Component {
 
     this.el.innerHTML = /*HTML*/ `
       <div class="modal">
-        <button class="btn-close">X</button>
+        <button class="btn-close">
+          <span class="material-symbols-outlined">
+            close
+          </span>
+        </button>
         <div class="wrap hide">
           <div class="poster-wrap"></div>
           <div class="specs">

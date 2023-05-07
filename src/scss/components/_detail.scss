@@ -1,20 +1,5 @@
 @use '../base';
 
-.btn-close {
-  width: 45px;
-  height: 45px;
-  position: absolute;
-  right: -5px;
-  top: -5px;
-  background-color: transparent;
-  font-size: 21px;
-  border: none;
-  color: base.$color--primary;
-  cursor: pointer;
-  &:hover {
-    color: base.$color--hover;
-  }
-}
 .wrap {
   display: flex;
   position: relative;
