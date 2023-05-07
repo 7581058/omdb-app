@@ -13,11 +13,6 @@ const store = new Store({
       duration: 64000
     },
     {
-      title: '슬램덩크 더 퍼스트',
-      id: 'tt15242330',
-      duration: 60000
-    },
-    {
       title: '교섭',
       id: 'tt21111120',
       duration: 57000

@@ -1,7 +1,7 @@
 import { Component } from '../core/core'
 import { register } from 'swiper/element/bundle'
 import recommendStore, { getGenre } from '../store/recommend'
-import movieStore, { getMovieDetails } from '../store/movie'
+import movieStore from '../store/movie'
 
 export default class SmallSlide extends Component {
   render() {
@@ -19,25 +19,31 @@ export default class SmallSlide extends Component {
     `
     const swipercontainer = this.el.querySelector('swiper-container')
 
-    recommendStore.state.genreArr.map(async id => {
-      const slide = document.createElement('swiper-slide')
+    const fetchData = async () => {
+      const responses = await Promise.all(
+        recommendStore.state.genreArr.map(id => {
+          return fetch(
+            `https://omdbapi.com?apikey=14c167f8&i=${id}&plot=full`
+          ).then(res => res.json())
+        })
+      )
+      responses.forEach(movie => {
+        const slide = document.createElement('swiper-slide')
+        slide.innerHTML = /*HTML*/ `
+          <img class="poster" src="${movie.Poster}" />
+          `
+        swipercontainer.append(slide)
 
-      await getMovieDetails(id)
-      const { movie } = movieStore.state
-
-      slide.innerHTML = /*HTML*/ `
-      <img class="poster" src="${movie.Poster}" />
-      `
-      swipercontainer.append(slide)
-
-      slide.addEventListener('click', async () => {
-        movieStore.state.movie = {}
-        movieStore.state.contents = false //첫 클릭 시 undefined 뜨지 않게
-        movieStore.state.modal = true
-        await getMovieDetails(movie.imdbID)
+        slide.addEventListener('click', async () => {
+          movieStore.state.movie = {}
+          movieStore.state.contents = false
+          movieStore.state.modal = true
+          movieStore.state.movie = movie
+          movieStore.state.contents = true
+        })
       })
-    })
-
+    }
+    fetchData()
     register()
   }
 }

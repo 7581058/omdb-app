@@ -8,10 +8,10 @@ export default class ObserverEl extends Component {
       <div id="observe"></div>
     `
 
-    const io = new IntersectionObserver(handle, {
+    const io = new IntersectionObserver(handleObserver, {
       threshold: 0.5
     })
-    function handle(entries) {
+    function handleObserver(entries) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           if (movieStore.state.page < movieStore.state.pageMax) {

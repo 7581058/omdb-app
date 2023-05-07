@@ -12,8 +12,7 @@ const store = new Store({
   modal: false,
   contents: false,
   movieID: '',
-  muted: true,
-  total: 1
+  muted: true
 })
 
 export default store
@@ -33,7 +32,6 @@ export const searchMovies = async page => {
     if (Response === 'True') {
       store.state.movies = [...store.state.movies, ...Search]
       store.state.pageMax = Math.ceil(Number(totalResults) / 10)
-      store.state.total = totalResults
     } else {
       store.state.message = Error
       store.state.pageMax = 1

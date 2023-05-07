@@ -1,0 +1,66 @@
+@use '../base';
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 80%;
+  flex-shrink: 0;
+  overflow: hidden;
+  .player {
+    width: 100%;
+    background-color: base.$color--black;
+    display: flex;
+    align-items: center;
+    video {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+    }
+    .volume {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      background-color: transparent;
+      border: none;
+      color: base.$color--white;
+    }
+    .info {
+      position: absolute;
+      margin-left: 60px;
+      top: 20%;
+      width: 40%;
+      height: 200px;
+      z-index: 12;
+      .title {
+        font-size: 36px;
+        font-weight: 700;
+        color: base.$color--primary;
+        font-family: 'Space Mono', monospace;
+        margin: 0;
+      }
+      .year {
+        width: fit-content;
+        margin-bottom: 10px;
+        color: base.$color--blue;
+        font-size: 14px;
+      }
+      .plot {
+        font-size: 20px;
+        color: base.$color--white;
+      }
+      .btn-more {
+        background-color: transparent;
+        border: 2px solid base.$color--primary;
+        border-radius: 8px;
+        color: base.$color--primary;
+        margin-top: 20px;
+        &:hover {
+          background-color: base.$color--primary;
+          color: base.$color--black;
+        }
+      }
+    }
+  }
+}
+      
+
